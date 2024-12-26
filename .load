@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# .load
+
+[ ! -z "${BASH_SOURCE}" ] && \
+    export PROFILE_DIR``=$(dirname $(realpath ${BASH_SOURCE})) || \
+    export PROFILE_DIR``=$(cd $(dirname $0) && pwd)
+
+for file in $(ls -1dF ${PROFILE_DIR}/*.sh | grep -v '/$'); do
+  source "${file}";
+done;
